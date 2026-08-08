@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VENTUREX-RAY</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>VENTUREX-RAY</h1>
+            <p class="subtitle">AI STARTUP STRESS TEST</p>
+            <div id="demo-badge" class="demo-badge hidden">DEMO MODE</div>
+        </header>
+
+        <section class="input-section">
+            <label for="idea-input">STARTUP IDEA</label>
+            <textarea id="idea-input" rows="6" placeholder="Describe your startup idea..."></textarea>
+            <button id="attack-btn" type="button">ATTACK STARTUP</button>
+            <p id="error-msg" class="error-msg hidden"></p>
+        </section>
+
+        <section id="loading-section" class="loading-section hidden">
+            <p class="loading-title">RUNNING ATTACKS...</p>
+            <ul class="loading-steps">
+                <li id="step-market"><span class="step-icon">[ ]</span> MARKET ATTACKER</li>
+                <li id="step-business"><span class="step-icon">[ ]</span> BUSINESS ATTACKER</li>
+                <li id="step-technology"><span class="step-icon">[ ]</span> TECHNOLOGY ATTACKER</li>
+                <li id="step-map"><span class="step-icon">[ ]</span> VULNERABILITY MAP</li>
+            </ul>
+        </section>
+
+        <section id="results-section" class="results-section hidden">
+            <div id="attacker-cards" class="attacker-cards"></div>
+
+            <div class="vulnerability-map-section">
+                <h2>VULNERABILITY MAP</h2>
+            </div>
+
+            <div id="severity-sections" class="severity-sections"></div>
+        </section>
+
+        <div id="modal-overlay" class="modal-overlay hidden">
+            <div class="modal">
+                <button id="modal-close" class="modal-close" type="button">&times;</button>
+                <div id="modal-content"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
