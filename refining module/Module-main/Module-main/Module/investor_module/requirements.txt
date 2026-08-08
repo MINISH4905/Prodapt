@@ -1,0 +1,3 @@
+# Investor Module Requirements (Stub)
+fastapi>=0.100.0
+google-generativeai>=0.3.0

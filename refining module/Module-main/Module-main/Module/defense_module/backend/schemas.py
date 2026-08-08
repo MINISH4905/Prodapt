@@ -1,0 +1,128 @@
+"""
+Defense Module Data Schemas (schemas.py)
+----------------------------------------
+This module defines the Pydantic data models used across the Defense & Refinement Engine
+(Modules 4, 5, and 6) of VentureX-Ray.
+
+Data Flow Architecture:
+1. Input Layer: `StartupProfile` & `VulnerabilityMap` (Original startup idea and findings from Attacker Modules 1-3).
+2. Refinement Layer (Module 4): `RefinedStartup` & `RefinementChange` (Constructive improvements and rationale).
+3. Concern & Question Layer (Module 5): `FounderConcernSet` & `ClarityQuestion` (Targeted questions probing founder understanding).
+4. Clarity Evaluation Layer (Module 6): `FounderResponse`, `WeakArea`, and `ClarityEvaluation` (Multi-dimensional scoring and qualitative feedback).
+"""
+
+from pydantic import BaseModel, Field
+from typing import List, Dict, Any
+
+# ==========================================
+# MODULE 1-3 INPUT SCHEMAS
+# ==========================================
+
+class StartupProfile(BaseModel):
+    """
+    Represents the original, baseline pitch of a startup.
+    Contains key strategic pillars: Problem, Solution, Target Customer, Business Model, and Technology.
+    """
+    name: str = Field(..., description="Name of the startup")
+    problem: str = Field(..., description="The core problem the startup intends to solve")
+    solution: str = Field(..., description="The proposed product or service solution")
+    target_customer: str = Field(..., description="The target customer segment or persona")
+    business_model: str = Field(..., description="Revenue generation and unit economics strategy")
+    technology: str = Field(..., description="The underlying technology stack or core technical innovation")
+
+class AttackerFinding(BaseModel):
+    """
+    Represents an individual vulnerability or risk finding identified by Attacker Modules (1-3).
+    Categorized across Market, Business, or Technology dimensions.
+    """
+    category: str = Field(..., description="Dimension: Market, Business, or Technology")
+    severity: str = Field(..., description="Severity level: High, Medium, or Low")
+    reasoning: str = Field(..., description="Detailed explanation of the vulnerability or weakness")
+    attack_question: str = Field(..., description="A challenging question that an investor would ask based on this weakness")
+    suggested_mitigation: str = Field(..., description="Actionable recommendation on how this vulnerability could be addressed")
+
+class VulnerabilityMap(BaseModel):
+    """
+    Aggregated vulnerability report containing all findings and an overall composite risk score (0-100).
+    """
+    findings: List[AttackerFinding] = Field(default_factory=list, description="List of vulnerability findings from attackers")
+    overall_risk_score: int = Field(..., description="Risk score from 0 (no risk) to 100 (extreme risk)")
+
+# ==========================================
+# MODULE 4: REFINEMENT ENGINE SCHEMAS
+# ==========================================
+
+class RefinementChange(BaseModel):
+    """
+    Tracks an individual, field-specific modification made by the AI Refinement Agent.
+    Provides transparency by documenting before/after states and the specific rationale.
+    """
+    field: str = Field(..., description="The field that was modified (e.g., solution, business_model, etc.)")
+    before: str = Field(..., description="Original text before refinement")
+    after: str = Field(..., description="Refined text after AI enhancement")
+    explanation: str = Field(..., description="Rationale for the change and which vulnerability it addresses")
+
+class RefinedStartup(BaseModel):
+    """
+    The updated startup concept output by Module 4 after addressing vulnerabilities.
+    Maintains original name while upgrading core fields and logging explicit changes.
+    """
+    name: str = Field(..., description="Startup name")
+    problem: str = Field(..., description="Refined description of the problem")
+    solution: str = Field(..., description="Refined description of the solution")
+    target_customer: str = Field(..., description="Refined target customer profile")
+    business_model: str = Field(..., description="Refined business model details")
+    technology: str = Field(..., description="Refined technology details")
+    changes: List[RefinementChange] = Field(default_factory=list, description="List of specific changes made and why")
+    change_rationale: str = Field(..., description="High-level summary of the overall refinement strategy")
+
+# ==========================================
+# MODULE 5: FOUNDER CONCERN & QUESTION SCHEMAS
+# ==========================================
+
+class FounderConcernSet(BaseModel):
+    """
+    Captures input feedback, doubts, or operational constraints submitted by the founder.
+    """
+    concerns: str = Field(..., description="Founder's feedback, concerns, or disagreements on the refined startup idea")
+
+class ClarityQuestion(BaseModel):
+    """
+    A tailored, probing question generated by AI to test founder comprehension of the refined concept.
+    """
+    id: str = Field(..., description="Unique identifier for the question (e.g., q1, q2, q3)")
+    question: str = Field(..., description="The targeted clarity question generated for the founder")
+    context: str = Field(..., description="Context detailing why this question was prompted (e.g., linked concern or vulnerability)")
+
+# ==========================================
+# MODULE 6: CLARITY EVALUATION SCHEMAS
+# ==========================================
+
+class FounderResponse(BaseModel):
+    """
+    Pairs a generated clarity question with the founder's defensive answer.
+    """
+    question_id: str = Field(..., description="ID of the question being answered")
+    question_text: str = Field(..., description="The full text of the question")
+    answer: str = Field(..., description="The founder's submitted answer")
+
+class WeakArea(BaseModel):
+    """
+    Identifies a specific dimension where the founder's defense was lacking, vague, or ungrounded.
+    """
+    category: str = Field(..., description="Dimension: Market, Business, or Technology")
+    weakness: str = Field(..., description="Short summary of the weak point")
+    details: str = Field(..., description="Detailed explanation of the deficiency in the founder's answer")
+    remedy: str = Field(..., description="Actionable recommendation to improve understanding and pitch clarity")
+
+class ClarityEvaluation(BaseModel):
+    """
+    Final evaluation output of Module 6 summarizing founder performance across multiple metrics.
+    Computes dimensional scores (specificity, consistency, groundedness) and overall clarity score.
+    """
+    clarity_score: int = Field(..., description="Composite founder clarity score from 0 to 100")
+    specificity_score: int = Field(..., description="Score evaluating answer detail and conciseness (0-100)")
+    consistency_score: int = Field(..., description="Score evaluating logical consistency with the refined model (0-100)")
+    grounded_score: int = Field(..., description="Score evaluating operational realism vs magical thinking (0-100)")
+    weak_areas: List[WeakArea] = Field(default_factory=list, description="List of identified weak areas requiring work")
+    detailed_analysis: str = Field(..., description="Qualitative summary of the founder's readiness and comprehension")
