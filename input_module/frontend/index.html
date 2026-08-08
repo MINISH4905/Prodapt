@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>VentureX-Ray</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="header">
+
+            <h1>VentureX-Ray</h1>
+
+            <p>
+                Break Your Startup Before Investors Break It.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <label for="idea">
+                Describe your startup idea
+            </label>
+
+            <textarea
+                id="idea"
+                placeholder="Example: An AI platform that helps small shops predict which products they should stock..."
+            ></textarea>
+
+
+            <button id="startButton">
+                START X-RAY
+            </button>
+
+
+            <p id="error"></p>
+
+        </div>
+
+
+        <div
+            id="result"
+            class="result hidden"
+        >
+
+            <h2>Project Created</h2>
+
+            <div class="project-id">
+                Project ID:
+                <strong id="projectId"></strong>
+            </div>
+
+
+            <h3>Structured Startup Profile</h3>
+
+
+            <div class="field">
+                <strong>Problem</strong>
+                <p id="problem"></p>
+            </div>
+
+
+            <div class="field">
+                <strong>Solution</strong>
+                <p id="solution"></p>
+            </div>
+
+
+            <div class="field">
+                <strong>Target Customer</strong>
+                <p id="customer"></p>
+            </div>
+
+
+            <div class="field">
+                <strong>Business Model</strong>
+                <p id="businessModel"></p>
+            </div>
+
+
+            <div class="field">
+                <strong>Market</strong>
+                <p id="market"></p>
+            </div>
+
+
+            <div class="field">
+                <strong>Assumptions</strong>
+
+                <ul id="assumptions"></ul>
+            </div>
+
+
+            <div class="next-stage">
+                ✓ Ready for 3 Attacker Agents
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="app.js"></script>
+
+</body>
+
+</html>

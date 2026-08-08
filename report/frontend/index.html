@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>VentureX-Ray Report</title>
+
+    <!-- Static CSS served by FastAPI -->
+    <link rel="stylesheet"
+          href="/static/style.css">
+
+</head>
+
+
+<body>
+
+    <h1>VENTURE X-RAY</h1>
+
+    <p class="subtitle">
+        FINAL REPORT &amp; PITCH GENERATOR
+    </p>
+
+
+    <div class="card">
+
+        <!-- Startup Name -->
+        <label for="startupName">
+            Startup Name
+        </label>
+
+        <input
+            type="text"
+            id="startupName"
+            value="EcoCart"
+        >
+
+
+        <!-- Problem -->
+        <label for="problem">
+            Problem
+        </label>
+
+        <textarea
+            id="problem"
+            rows="4"
+        >Plastic waste from online shopping</textarea>
+
+
+        <!-- Solution -->
+        <label for="solution">
+            Solution
+        </label>
+
+        <textarea
+            id="solution"
+            rows="4"
+        >AI-powered sustainable shopping assistant</textarea>
+
+
+        <!-- Target Market -->
+        <label for="targetMarket">
+            Target Market
+        </label>
+
+        <input
+            type="text"
+            id="targetMarket"
+            value="Environment-conscious online shoppers"
+        >
+
+
+        <!-- Business Model -->
+        <label for="businessModel">
+            Business Model
+        </label>
+
+        <input
+            type="text"
+            id="businessModel"
+            value="Subscription and transaction fees"
+        >
+
+
+        <!-- Defense Score -->
+        <label for="score">
+            Defense Score
+        </label>
+
+        <input
+            type="number"
+            id="score"
+            value="82"
+            min="0"
+            max="100"
+        >
+
+
+        <!-- Final Decision -->
+        <label for="decision">
+            Final Decision
+        </label>
+
+        <select id="decision">
+
+            <option value="STRONG">
+                STRONG
+            </option>
+
+            <option value="WEAK">
+                WEAK
+            </option>
+
+        </select>
+
+
+        <!-- Generate -->
+        <button
+            type="button"
+            onclick="generateReport()"
+        >
+            GENERATE REPORT
+        </button>
+
+
+        <!-- Status -->
+        <p id="status"></p>
+
+    </div>
+
+
+    <!-- Download Links -->
+
+    <div class="downloads">
+
+        <a
+            href="/download/report"
+            target="_blank"
+        >
+            DOWNLOAD FINAL REPORT
+        </a>
+
+
+        <a
+            href="/download/pitch"
+            target="_blank"
+        >
+            DOWNLOAD PITCH DECK
+        </a>
+
+    </div>
+
+
+    <!-- JavaScript -->
+    <script src="/static/script.js"></script>
+
+</body>
+
+</html>

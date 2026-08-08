@@ -1,0 +1,352 @@
+/* =========================================
+   GLOBAL
+========================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    font-family:
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    background: #ffffff;
+
+    color: #000000;
+
+    padding: 60px 20px;
+}
+
+
+/* =========================================
+   MAIN TITLE
+========================================= */
+
+h1 {
+    margin: 0;
+
+    text-align: center;
+
+    font-size: 48px;
+    font-weight: 800;
+
+    letter-spacing: 4px;
+
+    color: #000000;
+}
+
+.subtitle {
+    text-align: center;
+
+    margin-top: 10px;
+    margin-bottom: 40px;
+
+    color: #555555;
+
+    font-size: 14px;
+
+    letter-spacing: 3px;
+
+    font-weight: 600;
+}
+
+
+/* =========================================
+   CARD
+========================================= */
+
+.card {
+    width: 100%;
+    max-width: 720px;
+
+    margin: 0 auto;
+
+    padding: 35px;
+
+    background: #ffffff;
+
+    border: 2px solid #000000;
+
+    border-radius: 0;
+
+    box-shadow: 8px 8px 0 #000000;
+}
+
+
+/* =========================================
+   LABELS
+========================================= */
+
+label {
+    display: block;
+
+    margin-top: 20px;
+    margin-bottom: 8px;
+
+    color: #000000;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.5px;
+}
+
+label:first-child {
+    margin-top: 0;
+}
+
+
+/* =========================================
+   INPUTS
+========================================= */
+
+input,
+textarea,
+select {
+    width: 100%;
+
+    padding: 13px 15px;
+
+    border: 2px solid #000000;
+
+    border-radius: 0;
+
+    outline: none;
+
+    background: #ffffff;
+
+    color: #000000;
+
+    font-size: 15px;
+
+    font-family: inherit;
+
+    transition:
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+textarea {
+    resize: vertical;
+
+    min-height: 100px;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    background: #f2f2f2;
+
+    box-shadow:
+        4px 4px 0 #000000;
+}
+
+
+/* =========================================
+   SELECT
+========================================= */
+
+select {
+    cursor: pointer;
+}
+
+
+/* =========================================
+   BUTTON
+========================================= */
+
+button {
+    width: 100%;
+
+    margin-top: 30px;
+
+    padding: 15px 20px;
+
+    border: 2px solid #000000;
+
+    border-radius: 0;
+
+    background: #000000;
+
+    color: #ffffff;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+button:hover {
+    background: #ffffff;
+
+    color: #000000;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        4px 4px 0 #000000;
+}
+
+button:active {
+    transform: translateY(0);
+
+    box-shadow: none;
+}
+
+button:disabled {
+    opacity: 0.5;
+
+    cursor: not-allowed;
+
+    transform: none;
+
+    box-shadow: none;
+}
+
+
+/* =========================================
+   STATUS
+========================================= */
+
+#status {
+    min-height: 24px;
+
+    margin-top: 20px;
+
+    text-align: center;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    color: #000000;
+}
+
+#status.success {
+    color: #000000;
+}
+
+#status.error {
+    color: #000000;
+}
+
+
+/* =========================================
+   DOWNLOADS
+========================================= */
+
+.downloads {
+    width: 100%;
+
+    max-width: 720px;
+
+    margin: 30px auto 0;
+
+    display: flex;
+
+    gap: 15px;
+}
+
+.downloads a {
+    flex: 1;
+
+    padding: 14px 18px;
+
+    text-align: center;
+
+    text-decoration: none;
+
+    border: 2px solid #000000;
+
+    border-radius: 0;
+
+    background: #ffffff;
+
+    color: #000000;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.5px;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.downloads a:hover {
+    background: #000000;
+
+    color: #ffffff;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        4px 4px 0 #000000;
+}
+
+.downloads a.active {
+    background: #000000;
+
+    border-color: #000000;
+
+    color: #ffffff;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 700px) {
+
+    body {
+        padding: 35px 15px;
+    }
+
+    h1 {
+        font-size: 34px;
+
+        letter-spacing: 2px;
+    }
+
+    .subtitle {
+        font-size: 11px;
+
+        letter-spacing: 2px;
+    }
+
+    .card {
+        padding: 25px 20px;
+
+        box-shadow: 5px 5px 0 #000000;
+    }
+
+    .downloads {
+        flex-direction: column;
+    }
+
+    .downloads a {
+        width: 100%;
+    }
+}
