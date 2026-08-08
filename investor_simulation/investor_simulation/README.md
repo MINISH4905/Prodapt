@@ -1,4 +1,4 @@
-# VentureX-Ray — Module 7: Investor Simulation
+# PitchCraft AI — Investor Simulation
 
 Part of **PitchCraft AI**, an AI-powered startup stress-testing and refinement system.
 
